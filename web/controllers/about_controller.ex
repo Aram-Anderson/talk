@@ -1,4 +1,4 @@
-defmodule Talk.PageController do
+defmodule Talk.AboutController do
   use Talk.Web, :controller
 
   def index(conn, _params) do

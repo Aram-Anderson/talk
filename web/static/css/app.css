@@ -97,3 +97,40 @@
 }
 .alert-danger .alert-link {
   color:#843534}
+
+nav {
+  background-color: rgb(102, 102, 102);
+}
+
+.login-image {
+  width: 75%;
+}
+
+.login-image-small {
+  width: 100%;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.logo-image {
+  height: 3.5em;
+  padding-left: 0.5em;
+}
+
+.parallax-container {
+  height: 25em;
+}
+
+.title-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 30em;
+}
+
+.sign-in-text {
+  color: rgb(82, 182, 172);
+}
+ .login-card {
+   margin-top: 4em;
+ }

@@ -1,0 +1,91 @@
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <div class="row center">
+        <img src="<%= static_path(@conn, "/images/lightbulb_logo.png") %>">
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax"><img src="<%= static_path(@conn, "/images/coffee.jpg") %>"></div>
+</div>
+<div class="container">
+  <div class="section">
+    <!--   Icon Section   -->
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">face</i></h2>
+          <h5 class="center">We aim to help people hear one and other</h5>
+
+          <p class="light">There's an awful lot of noise in the world today, and not a lot of connection. We feel that so much of the division we see all around us comes from people not connecting on a human level.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+          <h5 class="center">Building bridges isn't just a catchphrase.</h5>
+
+          <p class="light">Our mission is to connect people who probably wouldn't normally get together, and help them see one and other as people instead of competing ideas.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">lock_open</i></h2>
+          <h5 class="center">We have a lot in common.</h5>
+
+          <p class="light">When you meet with someone from Let's Talk, the conversation doesn't need to be political. We feel that by focusing on what we all share, what we love, what makes us passionate, we can foster a better society one conversation at a time.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="parallax-container valign-wrapper">
+
+  <div class="parallax"><img src="<%= static_path(@conn, "/images/convo-parallax.jpg") %>"></div>
+  <div class="row center">
+    <div class="col s12 m5">
+      <div class="card-panel title-card">
+        <span class="black-text"><h5>Our Call To Action:</h5>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 center">
+        <h3><i class="mdi-content-send brown-text"></i></h3>
+        <h4>This Platform Is About Connection</h4>
+        <p class="left-align light">Make a commitment to yourself that you will make the time to meet people. These meetings are not intended to have an agenda. This is not a dating app, it's not even a friendship app. If you make a friend, that's great! But that's not the point. The point is to expand your own world, and at the same time expand the world of someone else. It might be uncomfortable. It might poke and prod at parts of yourself that you feel very strongly about. But at the end of the day, we all have to live together. Wouldn't that be easier if we could see each other as more than a social media post?</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+<%= if !@conn.assigns[:user] do %>
+<div class="row center">
+  <div class="col m4">
+  </div>
+  <div class="col s12 m4 center">
+    <div class="card grey darken-2">
+      <div class="card-image">
+        <img src="images/logo.png">
+      </div>
+      <div class="card-content">
+        <%= link to: auth_path(@conn, :request, "facebook") do %>
+        <img src="images/bootstrap-social.png" alt="Site Logo" class="login-image-small">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

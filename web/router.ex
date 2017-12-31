@@ -7,6 +7,7 @@ defmodule Talk.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Talk.Plugs.SetUser
   end
 
   pipeline :api do
@@ -16,7 +17,19 @@ defmodule Talk.Router do
   scope "/", Talk do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", LoginController, :index
+  end
+
+  scope "/users", Talk do
+    pipe_through :browser
+
+    get "/:id", UserController, :show
+  end
+
+  scope "/login", Talk do
+    pipe_through :browser
+
+    get "/", LoginController, :index
   end
 
   scope "/auth", Talk do
@@ -25,6 +38,12 @@ defmodule Talk.Router do
     get "/signout", AuthController, :signout
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
+  end
+
+  scope "/about", Talk do
+    pipe_through :browser
+
+    get "/", AboutController, :index
   end
 
   # Other scopes may use custom stacks.

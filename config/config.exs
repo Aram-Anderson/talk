@@ -28,7 +28,7 @@ import_config "#{Mix.env}.exs"
 
 config :ueberauth, Ueberauth,
   providers: [
-    facebook: { Ueberauth.Strategy.Facebook, [display: "iframe"] }
+    facebook: { Ueberauth.Strategy.Facebook, [] }
   ]
 
 config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,

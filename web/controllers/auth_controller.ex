@@ -28,12 +28,19 @@ defmodule Talk.AuthController do
         conn
         |> put_flash(:info, "Welcome Back!")
         |> put_session(:user_id, user.id)
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: login_path(conn, :index))
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Error Signing In")
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: login_path(conn, :index))
     end
+  end
+
+  def signout(conn, _params) do
+    conn
+      |> configure_session(drop: true)
+      |> put_flash(:info, "You've Successfully Signed Out")
+      |> redirect(to: login_path(conn, :index))
   end
 
 end

@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Hello Talk!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  </head>
+  <title>Let's Talk!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+</head>
 
-  <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+<body>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><%= link "About", to: about_path(@conn, :index) %></li>
+    <li><a href="badges.html">Components</a></li>
+    <li class="divider"></li>
+    <%= if @conn.assigns[:user] do %>
+    <li>
+      <%= link "Logout", to: auth_path(@conn, :signout) %>
+    </li>
+    <% else %>
+    <%= link "Sign In", to: login_path(@conn, :index), class: "sign-in-text" %>
+    <% end %>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <%= link to: login_path(@conn, :index)  do %>
+        <img src="<%= static_path(@conn, "/images/logo.png") %>" class="logo-image" >
+      <% end %>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+  <main role="main">
+    <%= render @view_module, @view_template, assigns %>
+  </main>
+
+  <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+</body>
 </html>

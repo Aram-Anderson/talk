@@ -97,3 +97,15 @@
 }
 .alert-danger .alert-link {
   color:#843534}
+
+nav {
+  background-color: rgb(102, 102, 102);
+}
+
+.login-image {
+  width: 75%;
+}
+
+.card-content {
+  text-align: center;
+}

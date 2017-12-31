@@ -8,14 +8,13 @@ exports.config = {
       // http://brunch.io/docs/config#-files-
       // joinTo: {
       //  "js/app.js": /^(web\/static\/js)|(node_modules)/,
-      //  "js/vendor.js": /^(web\/static\/vendor)/
+      //  "js/materialize.js": /^(web\/static\/vendor)/
       // }
       //
       // To change the order of concatenation of files, explicitly mention here
       // order: {
       //   before: [
-      //     "web/static/vendor/js/jquery-2.1.1.js",
-      //     "web/static/vendor/js/bootstrap.min.js"
+      //     "web/static/vendor/js/materialize.min.js"
       //   ]
       // }
     },

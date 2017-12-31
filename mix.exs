@@ -20,7 +20,7 @@ defmodule Talk.Mixfile do
   def application do
     [
       mod: {Talk, []},
-      extra_applications: [:logger, :ueberauth, :ueberauth_facebook]
+      extra_applications: [:logger, :ueberauth, :ueberauth_facebook, :faker]
     ]
   end
 
@@ -42,7 +42,8 @@ defmodule Talk.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:ueberauth, "~> 0.4"},
-      {:ueberauth_facebook, "~> 0.7"}
+      {:ueberauth_facebook, "~> 0.7"},
+      {:faker, "~> 0.9"}
     ]
   end
 

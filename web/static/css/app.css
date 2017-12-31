@@ -130,7 +130,13 @@ nav {
 
 .sign-in-text {
   color: rgb(82, 182, 172);
+  width: 100%;
 }
- .login-card {
-   margin-top: 4em;
- }
+.login-card {
+ display: block;
+}
+
+.dropdown-button {
+  width: 10em;
+  text-align: right;
+}

@@ -43,7 +43,8 @@ defmodule Talk.Mixfile do
       {:cowboy, "~> 1.0"},
       {:ueberauth, "~> 0.4"},
       {:ueberauth_facebook, "~> 0.7"},
-      {:faker, "~> 0.9"}
+      {:faker, "~> 0.9"},
+      {:react_phoenix, "~> 0.4.3"}
     ]
   end
 

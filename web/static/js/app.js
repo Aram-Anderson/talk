@@ -14,7 +14,13 @@
 import "phoenix_html"
 import "./init"
 import "./materialize.min"
+import "react-phoenix"
 
+
+import Hello from "./components/questions"
+window.Components = {
+  Hello
+}
 
 // Import local files
 //

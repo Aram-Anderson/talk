@@ -6,8 +6,7 @@ defmodule Talk.AuthController do
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do
     [first_name, last_name] = String.split(auth.info.name, " ")
-    user_params = %{uid: auth.uid, token: auth.credentials.token, email: auth.info.email, gender: auth.extra.raw_info.user["gender"], fb_image_url: auth.info.image, provider: params["provider"], first_name: first_name, last_name: last_name, full_name: auth.info.name}
-
+    user_params = %{uid: auth.uid, token: auth.credentials.token, email: auth.info.email, gender: auth.extra.raw_info.user["gender"], fb_image_url: "https://graph.facebook.com/#{auth.uid}/picture?type=large", provider: params["provider"], first_name: first_name, last_name: last_name, full_name: auth.info.name}
     changeset = User.changeset(%User{}, user_params)
 
     signin(conn, changeset)

@@ -46,6 +46,12 @@ defmodule Talk.Router do
     get "/", AboutController, :index
   end
 
+  scope "/user_response", Talk do
+    pipe_through :browser
+
+    post "/", UserResponseController, :create
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Talk do
   #   pipe_through :api

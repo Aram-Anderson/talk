@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col m5 center">
+    <h5>Good to see you again, <%= @user.first_name %></h5>
+    <img class="center-image" src=<%= "#{@user.fb_image_url}" %>>
+  </div>
+  <div class="col m1">
+  </div>
+  <div class="col m4">
+    <h5>Answer Some Questions</h5>
+    <p>All the questions are on a scale of 1-10. 10 will always be the highest and 1 the lowest.</p>
+    <p><%= @question.content %></p>
+    <%= form_for @changeset, user_response_path(@conn, :create), fn f -> %>
+    <%= hidden_input f, :question, id: "question_id", value: @question.id %>
+    <div class="form-group">
+      <p class="range-field">
+        <input type="range" id="user_response_answer" name="user_response[answer]" min="1" max="10" />
+      </p>
+    </div>
+
+    <%= submit "Save Answer", class: "btn btn-primary", onclick: "Materialize.toast('Answer Recorded!', 4000)" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col m1">
+  </div>
+  <h5>Your Matches:</h5>
+  <%= for match <- @matches do %>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src=<%= match.fb_image_url %>>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%= match.first_name %><i class="material-icons right">more_vert</i></span>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><%= match.first_name %>'s bio<i class="material-icons right">close</i></span>
+        <p><%= match.bio %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= react_component("Components.Hello", %{content: @question.content}) %>

@@ -140,3 +140,12 @@ nav {
   width: 10em;
   text-align: right;
 }
+
+#user_response_answer {
+  display: block;
+}
+
+.center-image {
+  display: block;
+   margin: 0 auto;
+}

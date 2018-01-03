@@ -53,6 +53,8 @@ defmodule Talk.Web do
       import Talk.Router.Helpers
       import Talk.ErrorHelpers
       import Talk.Gettext
+
+      import ReactPhoenix.ClientSide
     end
   end
 

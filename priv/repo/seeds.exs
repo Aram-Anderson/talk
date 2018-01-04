@@ -9,9 +9,8 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will halt execution if something goes wrong.
-alias Talk.User
-alias Talk.Repo
-alias Talk.Question
+
+alias Talk.{User, Repo, Question, UserResponse}
 
 names = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
 "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -31,4 +30,14 @@ end
 Enum.each questions, fn(question) ->
   changeset = Question.changeset(%Question{}, %{content: question})
   Repo.insert!(changeset)
+end
+
+Enum.each 1..10, fn(user_id) ->
+    Enum.each 1..22, fn(question_id) ->
+    question = Repo.get(Question, question_id)
+    changeset = question
+    |> Ecto.build_assoc(:user_responses, user_id: user_id)
+    |> UserResponse.changeset(%{answer: Enum.random(1..10)})
+    Repo.insert(changeset)
+  end
 end

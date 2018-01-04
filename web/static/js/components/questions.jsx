@@ -8,6 +8,5 @@ export default class Hello extends React.Component {
   render() {
     return (
       <p>{this.props.content}</p>
-      )
-    }
+    )}
   }

@@ -15,7 +15,7 @@ defmodule Talk.QueryHelper do
 
     current_user_responses = %{user_id: user.id, answers: current_user_answer_map}
 
-    other_users_responses = for match <- other_users, into: %{}, do: {user.first_name, match.id, [user_responses: %{}]}
+    other_users_responses = for match <- other_users, into: %{}, do: {user.id}
 
 require IEx
 IEx.pry()

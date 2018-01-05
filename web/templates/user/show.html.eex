@@ -1,12 +1,22 @@
 <div class="row">
-  <div class="col m5 center">
-    <h5>Good to see you again, <%= @user.first_name %></h5>
-    <img class="center-image" src=<%= "#{@user.fb_image_url}" %>>
-  </div>
   <div class="col m1">
   </div>
+  <div class="col m3 center">
+    <h5>Good to see you again, <%= @user.first_name %></h5>
+    <div class="card">
+      <div class="card-image">
+        <img class="center-image" src=<%= "#{@user.fb_image_url}" %>>
+        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
+      </div>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col m3">
+  </div>
   <div class="col m4">
-    <h5>Answer Some Questions</h5>
+    <br><br><h5>Answer Some Questions</h5>
     <p>All the questions are on a scale of 1-10. 10 will always be the highest and 1 the lowest.</p>
     <p><%= @question.content %></p>
     <%= form_for @changeset, user_response_path(@conn, :create), fn f -> %>
@@ -34,6 +44,7 @@
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4"><%= match.first_name %><i class="material-icons right">more_vert</i></span>
+        <button class="btn btn-primary" type="button" name="button">Chat!</button>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4"><%= match.first_name %>'s bio<i class="material-icons right">close</i></span>
@@ -44,4 +55,4 @@
   <% end %>
 </div>
 
-<%= react_component("Components.Hello", %{content: @question.content}) %>
+<%= react_component("Components.Hello", %{content: @question.content, question_id: @question.id, }) %>

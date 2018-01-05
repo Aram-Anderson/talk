@@ -13,7 +13,8 @@ defmodule Talk.UserController do
       match_query = from u in Talk.User, where: u.id != ^id
       random_query = from q in Talk.Question, order_by: fragment("RANDOM()"), limit: 1
       changeset = UserResponse.changeset(%UserResponse{})
-      matches = Talk.QueryHelper.find_matches(conn)
+      matches = #Repo.all(match_query)
+        Talk.QueryHelper.find_matches(conn)
       [question] = Repo.all(random_query)
       render conn, "show.html", user: user, question: question, changeset: changeset, matches: matches
     else

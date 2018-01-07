@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col m1">
+
+  </div>
+  <h4>Edit your profile:</h4>
+
+</div>
+<br><br><br>
+<div class="row">
+<div class="col m2">
+</div>
+<div class="col m8">
+
+<%= form_for @changeset, user_path(@conn, :update, @user), fn f -> %>
+  <div class="form-group">
+    <%= text_input f, :first_name, placeholder: "First Name", class: "form-control" %>
+    <%= error_tag f, :first_name %>
+    <%= text_input f, :last_name, placeholder: "Last Name", class: "form-control" %>
+    <%= error_tag f, :last_name %>
+    <%= text_input f, :image_url, placeholder: "Add an Image", class: "form-control" %>
+    <%= error_tag f, :image_url %>
+    <%= textarea f, :bio, placeholder: "Bio, 120 chars max", class: "form-control materialize-textarea", data: [length: "250"] %>
+    <%= error_tag f, :bio %>
+  </div>
+
+  <%= submit "Update", class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>

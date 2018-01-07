@@ -15,14 +15,32 @@ defmodule Talk.QueryHelper do
 
     current_user_responses = %{user_id: user.id, answers: current_user_answer_map}
 
-    other_users_responses = for match <- other_users, into: %{}, do: {user.id}
+    other_users_responses = for match <- other_users, into: %{}, do: {match.id,
+      Enum.reduce(match.user_responses, 0, fn(response, acc) ->
+        case Map.has_key?(current_user_responses.answers, response.question_id) do
+          true ->
+            acc + (current_user_responses.answers[response.question_id] - response.answer)
+          false ->
+            acc
+          end
+      end)
+      }
 
-require IEx
-IEx.pry()
-    # Enum.each(user.user_responses, fn(user_response) ->
-    #   Map.put(current_user_responses, user_response.question_id, user_response.answer)
-    # end)
+    sorted_matches = Enum.map(other_users_responses, fn({key, value}) -> {String.to_atom(Integer.to_string(key)), value} end) |> List.keysort(1)
+    require IEx
+    IEx.pry()
 
+    [match_profiles | _tail] = Enum.split(sorted_matches, 3) |> Tuple.to_list()
+
+    match_ids =
+      match_profiles
+        |> Keyword.keys()
+        |> Enum.map(fn(id) ->
+          Atom.to_string(id)
+          |> String.to_integer()
+        end)
+
+    User |> where([u], u.id in ^match_ids) |> Repo.all
   end
 
 end

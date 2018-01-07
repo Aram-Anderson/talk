@@ -55,7 +55,7 @@ defmodule Talk.Web do
       import Talk.ErrorHelpers
       import Talk.Gettext
 
-      import ReactPhoenix.ClientSide
+      # import ReactPhoenix.ClientSide
     end
   end
 

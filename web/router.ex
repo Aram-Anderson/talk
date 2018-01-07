@@ -24,6 +24,8 @@ defmodule Talk.Router do
     pipe_through :browser
 
     get "/:id", UserController, :show
+    get "/:id/edit", UserController, :edit
+    put "/:id", UserController, :update
   end
 
   scope "/login", Talk do

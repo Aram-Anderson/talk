@@ -43,6 +43,7 @@ defmodule Talk.Web do
   def view do
     quote do
       use Phoenix.View, root: "web/templates"
+      use Phoenix.HTML.SimplifiedHelpers
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

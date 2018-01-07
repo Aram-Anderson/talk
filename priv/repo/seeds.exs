@@ -32,7 +32,7 @@ Enum.each questions, fn(question) ->
   Repo.insert!(changeset)
 end
 
-Enum.each 1..10, fn(user_id) ->
+Enum.each 1..11, fn(user_id) ->
     Enum.each 1..22, fn(question_id) ->
     question = Repo.get(Question, question_id)
     changeset = question

@@ -1,6 +1,8 @@
 defmodule Talk.Question do
   use Talk.Web, :model
 
+  @derive {Poison.Encoder, only: [:content, :id]}
+
   schema "questions" do
     has_many :user_responses, Talk.UserResponse
     field :content, :string

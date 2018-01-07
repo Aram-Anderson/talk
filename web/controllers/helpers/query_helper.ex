@@ -27,8 +27,6 @@ defmodule Talk.QueryHelper do
       }
 
     sorted_matches = Enum.map(other_users_responses, fn({key, value}) -> {String.to_atom(Integer.to_string(key)), value} end) |> List.keysort(1)
-    require IEx
-    IEx.pry()
 
     [match_profiles | _tail] = Enum.split(sorted_matches, 3) |> Tuple.to_list()
 

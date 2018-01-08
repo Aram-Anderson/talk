@@ -15,7 +15,7 @@ defmodule Talk.Router do
   end
 
   scope "/", Talk do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", LoginController, :index
   end
@@ -53,9 +53,4 @@ defmodule Talk.Router do
 
     post "/", UserResponseController, :create
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Talk do
-  #   pipe_through :api
-  # end
 end

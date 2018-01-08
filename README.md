@@ -26,6 +26,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 To visit the production version of the app, go [here](https://cap-talk-app.herokuapp.com/). You will not be able to log in on production, however. Facebook OAuth will only allow whitelisted accounts to log in on an app in development mode, and I couldn't get approval to go into prod mode with Facebook.
 
 ## Things I'd like to add
+  * Test coverage! In my scramble to learn how to build an app in a new language, I didn't write any tests. I really want to learn to test Elixir/Phoenix properly.
   * I'd love to break some of the view stuff into React components. Particularly the questions and the matches. Right now, the page reloads on each question being answered, which is less than ideal. I'll probably tackle that first.
   * I'd like to add in chat functionality using websockets. That's another thing I'll tackle soon. Phoenix does websockets really well, and I want to get that going.
   * There's a ton of frontend work that could be done to make things look better.
